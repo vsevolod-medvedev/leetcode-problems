@@ -1,6 +1,6 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        digitMap = {
+        digit_map = {
             'I': 1,
             'V': 5,
             'X': 10,
@@ -9,7 +9,7 @@ class Solution:
             'D': 500,
             'M': 1000,
         }
-        pairMap = {
+        pair_map = {
             'IV': 4,
             'IX': 9,
             'XL': 40,
@@ -23,16 +23,23 @@ class Solution:
             digit = s[i]
             next = s[i + 1] if i < len(s) - 1 else ''
             pair = digit + next
-            if next and pair in pairMap.keys():
-                sum += pairMap[pair]
+            if next and pair in pair_map.keys():
+                sum += pair_map[pair]
                 i += 2
             else:
-                sum += digitMap[digit]
+                sum += digit_map[digit]
                 i += 1
         return sum
 
 
-print(Solution().romanToInt('III'))
-print(Solution().romanToInt('LVIII'))  # 58
-print(Solution().romanToInt('MCMXCIV'))  # 1994
-print(Solution().romanToInt('MCDLXXVI'))  # 1476
+def test_roman_to_int():
+    solution = Solution()
+    assert solution.romanToInt('III') == 3
+    assert solution.romanToInt('LVIII') == 58
+    assert solution.romanToInt('MCMXCIV') == 1994
+    assert solution.romanToInt('MCDLXXVI') == 1476
+    print("Test passed!")
+
+
+test_roman_to_int()
+
