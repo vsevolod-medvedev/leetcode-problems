@@ -1,3 +1,11 @@
+"""
+Given an integer, convert it to a roman numeral.
+
+Constraints:
+ • 1 <= num <= 3999
+"""
+
+
 class Solution:
     def intToRoman(self, num: int) -> str:
         assert 1 <= num <= 3999
@@ -42,7 +50,7 @@ class Solution:
         }[digit]
 
 
-def test_int_to_roman():
+def test():
     solution = Solution()
     for test_case in (
          (3, 'III'),
@@ -50,8 +58,9 @@ def test_int_to_roman():
          (1994, 'MCMXCIV'),
          (1476, 'MCDLXXVI'),
     ):
-        assert solution.intToRoman(test_case[0]) == test_case[1], solution.intToRoman(test_case[0])
+        result = solution.intToRoman(test_case[0])
+        assert result == test_case[1], result
     print("Test passed!")
 
 
-test_int_to_roman()
+test()
