@@ -16,7 +16,7 @@ class Solution:
 
         best = s[0]
 
-        # Even palindroms
+        # Odd palindroms
         for i in range(1, length - 1):
             count = 1
             k = min(i, length - 1 - i)
@@ -27,7 +27,7 @@ class Solution:
             if count > len(best):
                 best = s[i - count // 2: i + count // 2 + 1]
 
-        # Odd palindroms
+        # Even palindroms
         for i in range(1, length):
             count = 0
             k = min(i, length - i)
