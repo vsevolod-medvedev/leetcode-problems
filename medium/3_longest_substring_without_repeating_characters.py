@@ -19,8 +19,8 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 Constraints:
-0 <= s.length <= 5 * 104
-s consists of English letters, digits, symbols and spaces.
+ • 0 <= s.length <= 5 * 104
+ • s consists of English letters, digits, symbols and spaces.
 """
 
 class Solution:
@@ -38,15 +38,14 @@ class Solution:
 
 def test():
     solution = Solution()
-    for i, test_case in enumerate((
+    for i, (source, expected) in enumerate((
             ("abcabcbb", 3),
             ("bbbbb", 1),
             ("pwwkew", 3),
             (" ", 1),
     )):
-        actual = solution.lengthOfLongestSubstring(test_case[0])
-        expected = test_case[1]
-        assert actual == expected, f"case {i}: {test_case[0]}: expected {expected}, got {actual}"
+        actual = solution.lengthOfLongestSubstring(source)
+        assert actual == expected, f"case {i}: {source}: expected {expected}, got {actual}"
     print("Test passed!")
 
 
