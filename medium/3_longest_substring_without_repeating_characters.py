@@ -26,18 +26,14 @@ s consists of English letters, digits, symbols and spaces.
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         count = len(s)
-        best = ''
+        best = 0
         for i in range(count):
             for j in range(i, count):
                 if s[j] in s[i:j]:
                     break
-                candidate = s[i:j+1]
-                # print(candidate)
-                if candidate in s and len(candidate) > len(best):
-                    # print('works!')
-                    best = candidate
+                best = max(best, j - i + 1)
 
-        return len(best)
+        return best
 
 
 def test():
@@ -50,7 +46,7 @@ def test():
     )):
         actual = solution.lengthOfLongestSubstring(test_case[0])
         expected = test_case[1]
-        assert actual == expected, f"case {i}: expected {expected}, got {actual}"
+        assert actual == expected, f"case {i}: {test_case[0]}: expected {expected}, got {actual}"
     print("Test passed!")
 
 
