@@ -1,3 +1,4 @@
+import random
 from abc import ABC, abstractmethod
 from collections import defaultdict
 
@@ -6,7 +7,8 @@ import pytest as pytest
 
 @pytest.fixture
 def atm():
-    return ATM()
+    sdk = SDKImpl()
+    return ATM(sdk=sdk)
 
 
 @pytest.mark.parametrize('amount,is_valid', (
@@ -112,5 +114,17 @@ class SDK(ABC):
         pass
 
     @abstractmethod
+    def open_dispenser(self) -> None:
+        pass
+
+
+class SDKImpl(SDK):
+    def count_banknotes(self, banknote: int) -> int:
+        # долго и шумно
+        return random.randint(0, 20)
+
+    def move_banknote_to_dispenser(self, banknote: int, count: int) -> None:
+        pass
+
     def open_dispenser(self) -> None:
         pass
