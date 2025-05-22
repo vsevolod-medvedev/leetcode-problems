@@ -25,6 +25,9 @@ Constraints:
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        """
+        Use sliding window
+        """
         count = len(s)
         best = 0
         for i in range(count):
